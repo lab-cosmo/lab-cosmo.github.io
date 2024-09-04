@@ -101,6 +101,7 @@ def update_page(html_page, repos):
     project_list_div = soup.find('div', id='project_list')
     
     if project_list_div:
+        project_list_div.clear()
         # Create the HTML content for the projects
         for project in repos:
             project_div = soup.new_tag('div', **{'class': 'project'})
