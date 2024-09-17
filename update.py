@@ -53,7 +53,7 @@ def update_sitemap(org_name):
         for repo in repos:
             # Construct the GitHub Pages URL for each repository
             repo_name = repo['name']
-            url = f"{base_url}{repo_name}/"
+            url = f"{base_url}{repo_name}"
             response = requests.get(url, timeout=10)
             if response.status_code == 200:
                last_commit = get_last_commit_date(org_name,repo_name)
