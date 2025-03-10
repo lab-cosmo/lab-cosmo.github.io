@@ -73,17 +73,6 @@ def update_sitemap(org_name):
                         "freq": freq,
                     }
                 )
-                # adds both the versions with and without a final "/"
-                urls.append(
-                    {
-                        "name": repo_name,
-                        "description": repo["description"]
-                        or "No description available.",
-                        "url": url + "/",
-                        "date": last_commit,
-                        "freq": freq,
-                    }
-                )
             elif response.status_code == 404:
                 print(f"URL Not Found (404): {url}")
 
@@ -126,8 +115,6 @@ def update_page(html_page, repos):
         project_list_div.clear()
         # Create the HTML content for the projects
         for project in repos:
-            if project["url"][-1] != "/":  # skip duplicates
-                continue
             project_div = soup.new_tag("div", **{"class": "project"})
 
             project_title = soup.new_tag("h3")
